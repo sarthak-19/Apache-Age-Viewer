@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -26,7 +26,7 @@ import { connect, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {
-  VerticalLine, SubLabelLeft, SubLabelRight, GraphSelectDropdown,
+  VerticalLine, SubLabelLeft, SubLabelRight, GraphSelectDropdown, HorizontalLine,
 } from './SidebarComponents';
 
 const genLabelQuery = (eleType, labelName, database) => {
@@ -325,78 +325,71 @@ const SidebarHome = ({
           <br />
           <NodeList nodes={nodes} setCommand={setCommand} />
         </div>
-        <VerticalLine />
+        <HorizontalLine />
         <div className="form-group sidebar-item">
           <b>Edge Label</b>
           <br />
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
-        <VerticalLine />
+        <HorizontalLine />
         <div className="form-group sidebar-item">
           <b>Properties</b>
           <br />
           <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
         </div>
-        <VerticalLine />
-        <div className="form-group sidebar-item-disconnect">
-          <button
-            className="frame-head-button refresh_button btn btn-link"
-            type="button"
-            onClick={() => refreshSidebarHome()}
-          >
-            <FontAwesomeIcon
-              icon={faRedo}
-              size="1x"
-              color="white"
-              flip="horizontal"
+        <HorizontalLine />
+      </div>
+      <div className="form-group sidebar-item-disconnect">
+          <div className="sidebar-buttons">
+            <button
+              className="frame-head-button refresh_button btn btn-link"
+              type="button"
+              onClick={() => refreshSidebarHome()}
+            >
+              <FontAwesomeIcon
+                icon={faRedo}
+                size="1x"
+                color="white"
+                flip="horizontal"
+              />
+            </button>
+            <br />
+            <b>Refresh</b>
+          </div>
+          
+          <div className="sidebar-buttons">
+            <button
+              className="frame-head-button close_session btn btn-link"
+              type="button"
+              color="#142B80"
+              onClick={() => confirm({
+                title: 'Are you sure you want to close this window?',
+                onOk() {
+                  requestDisconnect();
+                },
+                onCancel() {
+                  return false;
+                },
+              })}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                size="1x"
+                color="white"
+              />
+            </button>
+            <br />
+            <b>Close Session</b>
+          </div>
+          
+          <div className="sidebar-buttons">
+            <GraphSelectDropdown
+              graphs={graphs}
+              changeCurrentGraph={changeCurrentGraph}
+              changeGraphDB={changeGraph}
             />
-          </button>
-          <br />
-          <b>Refresh</b>
-          <div style={{
-            border: '1px solid #C4C4C4',
-            opacity: '1',
-            width: '80%',
-            height: '0',
-            margin: '3px auto',
-          }}
-          />
-          <button
-            className="frame-head-button close_session btn btn-link"
-            type="button"
-            color="#142B80"
-            onClick={() => confirm({
-              title: 'Are you sure you want to close this window?',
-              onOk() {
-                requestDisconnect();
-              },
-              onCancel() {
-                return false;
-              },
-            })}
-          >
-            <FontAwesomeIcon
-              icon={faTimes}
-              size="1x"
-              color="white"
-            />
-          </button>
-          <br />
-          <b>Close Session</b>
-          <div style={{
-            border: '1px solid #C4C4C4',
-            opacity: '1',
-            width: '80%',
-            height: '0',
-            margin: '3px auto',
-          }}
-          />
-          <GraphSelectDropdown
-            graphs={graphs}
-            changeCurrentGraph={changeCurrentGraph}
-            changeGraphDB={changeGraph}
-          />
-        </div>
+          </div>
+        
       </div>
     </div>
   );

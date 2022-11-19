@@ -139,7 +139,8 @@ const Frames = ({
   }, [frameList, queryResult]);
 
   return (
-    <div className="container-fluid frame-area pt-3">
+    // <div className="container-fluid frame-area pt-3">
+    <div className="pt-3">
       {frames}
     </div>
   );

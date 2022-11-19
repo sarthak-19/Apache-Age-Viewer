@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
@@ -27,7 +27,8 @@ import AlertContainers from '../../alert/containers/AlertContainers';
 import CodeMirror from '../../editor/containers/CodeMirrorWapperContainer';
 import SideBarToggle from '../../editor/containers/SideBarMenuToggleContainer';
 import { setting } from '../../../conf/config';
-import IconPlay from '../../../icons/IconPlay';
+// import IconPlay from '../../../icons/IconPlay';
+import {PlayArrowOutlined} from '@material-ui/icons';
 
 const Editor = ({
   setCommand,
@@ -118,68 +119,57 @@ const Editor = ({
     <div className="container-fluid">
       <div className="editor">
         <div className="container-fluid editor-area card-header">
-          <div className="input-group input-style">
-            <div style={{
-              height: '60px',
-              width: '60px',
-              color: '#ffffff',
-              textAlign: 'left',
-              lineHeight: '30px',
-            }}
-            >
-              <spna>
-                Query
-                <br />
-                Editor
-              </spna>
-            </div>
-            <div className="form-control col-11 editor-code-wrapper">
+          <div style={{
+            height: '40px',
+            color: '#ffffff',
+            textAlign: 'center',
+            lineHeight: '30px',
+            fontSize: '1.5rem'
+          }}>
+            <spna>
+              Query Editor
+            </spna>
+          </div>
+          <div className="input-style">
+            <div className="form-control editor-code-wrapper">
               <CodeMirror
                 onClick={onClick}
                 value={command}
                 onChange={setCommand}
               />
-            </div>
-            <div className="input-group-append ml-auto editor-button-wrapper" id="editor-buttons">
-              {/* <button className="frame-head-button btn btn-link"
-               type="button" onClick={() => favoritesCommand()}>
-                <FontAwesomeIcon
-                  icon={faStar}
-                  size="lg"
-                />
-              </button> */}
-              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" onClick={() => clearCommand()}>
+               <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" onClick={() => clearCommand()}>
                 <FontAwesomeIcon
                   icon={faTimesCircle}
                   size="1x"
                 />
               </button>
-              <button
+            </div>
+            <button
                 className="frame-head-button btn btn-link"
                 type="button"
                 onClick={() => onClick()}
                 title="Run Query"
               >
-                <IconPlay />
-              </button>
-              <button
-                className="frame-head-button btn btn-link"
-                type="button"
-                onClick={() => {
-                  toggleMenu('home');
-                  if (!isActive) {
-                    document.getElementById('wrapper').classList.remove('wrapper');
-                    document.getElementById('wrapper').classList.add('wrapper-extension-padding');
-                  } else {
-                    document.getElementById('wrapper').classList.remove('wrapper-extension-padding');
-                    document.getElementById('wrapper').classList.add('wrapper');
-                  }
-                }}
-                title={(isActive) ? 'Hide' : 'Show'}
-              >
-                <SideBarToggle isActive={isActive} />
-              </button>
-            </div>
+                {/* <IconPlay /> */}
+                <PlayArrowOutlined fontSize={'large'} />
+            </button>
+            <button
+              className="frame-head-button btn btn-link"
+              type="button"
+              onClick={() => {
+                toggleMenu('home');
+                if (!isActive) {
+                  document.getElementById('wrapper').classList.remove('wrapper');
+                  document.getElementById('wrapper').classList.add('wrapper-extension-padding');
+                } else {
+                  document.getElementById('wrapper').classList.remove('wrapper-extension-padding');
+                  document.getElementById('wrapper').classList.add('wrapper');
+                }
+              }}
+              title={(isActive) ? 'Hide' : 'Show'}
+            >
+              <SideBarToggle isActive={isActive} />
+            </button>
           </div>
         </div>
       </div>

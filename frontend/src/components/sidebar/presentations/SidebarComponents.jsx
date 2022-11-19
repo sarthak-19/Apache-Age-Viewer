@@ -49,6 +49,17 @@ export const VerticalLine = () => (
   />
 );
 
+export const HorizontalLine = () => (
+  <div style={{
+    border: '1px solid #C4C4C4',
+    opacity: '1',
+    width: '80%',
+    height: '0',
+    margin: '3px auto',
+  }}
+  />
+);
+
 const SubLabelRight = ({ label, classes }) => (
   <div className={classes} style={StyleTextRight}>{label}</div>
 );
@@ -94,6 +105,7 @@ const GraphSelectDropdown = ({ graphs, changeCurrentGraph, changeGraphDB }) => {
       <Select onChange={handleGraphClick} placeholder="Select Graph" style={selectStyle}>
         {options}
       </Select>
+      <br />
       <b>
         Current Graph
       </b>
