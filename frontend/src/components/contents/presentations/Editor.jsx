@@ -119,13 +119,7 @@ const Editor = ({
     <div className="container-fluid">
       <div className="editor">
         <div className="container-fluid editor-area card-header">
-          <div style={{
-            height: '40px',
-            color: '#ffffff',
-            textAlign: 'center',
-            lineHeight: '30px',
-            fontSize: '1.5rem'
-          }}>
+          <div className="queryEditor">
             <spna>
               Query Editor
             </spna>

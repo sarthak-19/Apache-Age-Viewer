@@ -133,3 +133,11 @@
 .FullScreen .FlexContentWrapper {
   height: 100% !important;
 }
+
+@media(max-width:795px)
+{
+    .FrameHeader
+    {
+      display: block;
+    }
+}

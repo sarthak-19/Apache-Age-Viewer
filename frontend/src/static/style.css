@@ -68,20 +68,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    padding-top: 90px;
     overflow: hidden;
-}
-
-@media (min-width: 768px) {
-    body {
-        padding-top:0
-    }
-}
-
-@media (min-width: 768px) {
-    body {
-        margin-left:80px
-    }
 }
 
 .wrapper {
@@ -174,7 +161,7 @@ body {
 }
 
 .sidebar-item {
-    width: 30%;
+    width: 80%;
     margin: 1.5rem 1rem 1.5rem 1rem;
 }
 /* 
@@ -209,7 +196,7 @@ a[data-toggle="collapse"] {
     left: 0;
     right: 0;
     z-index: 0;
-    padding: 20px 15px 0 15px;
+    padding: 20px 0 0 0;
     /* height: calc(100vh - 5.0rem); */
     height: 90vh;
     overflow-y: scroll;
@@ -235,6 +222,14 @@ a[data-toggle="collapse"] {
     opacity: 1;
 }
 
+.queryEditor
+{
+    height: 40px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.5rem;
+}
 .editor-code-wrapper{
     margin-top: 1px;
     min-height: 60px;
@@ -347,24 +342,32 @@ a[data-toggle="collapse"] {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) 
+@media(max-width: 1050px)
 {
-
-    #sidebar {
-        margin-left: -320px;
+    /* graph buttons */
+    .form-group
+    {
+        display: block;
     }
-    #sidebar.active {
-        margin-left: 0;
+    .ant-row{
+        display: block;
     }
-    #content {
+    .ant-col-6{
         width: 100%;
+        max-width: fit-content;
     }
-    #content.active {
-        width: calc(100% - 320px);
+    .ant-col-18{
+        width: 100%;
+        max-width: fit-content;
+
     }
-    #sidebarCollapse span {
-        display: none;
-    }
+}
+@media(max-width:795px)
+{
+    .queryEditor
+    {
+        font-size: large;
+    }   
 }
 
 .btn-link {

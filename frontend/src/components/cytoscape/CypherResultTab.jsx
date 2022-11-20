@@ -48,7 +48,7 @@ class CypherResultTab extends Component {
     };
     return (
       <div style={{
-        display: 'flex', flexDirection: 'row', width: '20%', height: '96px', border: 'solid 1px #C4C4C4',
+        display: 'flex', flexDirection: 'row', width: '35%', height: '96px', border: 'solid 1px #C4C4C4',
       }}
       >
         <button
