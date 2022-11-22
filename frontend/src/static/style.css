@@ -232,6 +232,7 @@ a[data-toggle="collapse"] {
 }
 .editor-code-wrapper{
     margin-top: 1px;
+    height: auto;
     min-height: 60px;
     padding: 0;
     resize: vertical;

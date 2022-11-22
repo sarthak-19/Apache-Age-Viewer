@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+/* eslint-disable */
 import React, { useRef, useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/keymap/sublime';
@@ -95,8 +95,19 @@ const CodeMirrorWrapper = ({
         const lineCount = editor.lineCount();
         if (lineCount <= 1) {
           editor.setOption('lineNumberFormatter', () => '$');
-        } else {
+        }
+        else 
+        {
           editor.setOption('lineNumberFormatter', (number) => number);
+          var draggedHeight=document.getElementById("codeMirrorEditor").style.height;
+          if(draggedHeight)
+          {
+            var height=draggedHeight.split("px")[0];
+            if(height<(58+21*lineCount))
+            {
+              document.getElementById("codeMirrorEditor").style.height=null;
+            }
+          }
         }
         return true;
       }}
